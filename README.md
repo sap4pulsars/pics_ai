@@ -1,6 +1,6 @@
 Dockerfile for PICS (Pulsar Image-based Classification System) AI based on W. W. Zhu et al. 2014. \
 Contains: PRESTO TEMPO CALCEPH PSRCAT PYSLALIB THEANO \
-Original Source code of the AI can be found at https://github.com/zhuww/ubc_AI 
+Original Source code of the AI can be found at https://github.com/zhuww/ubc_AI \
 The presto docker file is based on the work of https://github.com/ewanbarr/presto-docker
 
 
