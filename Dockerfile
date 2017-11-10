@@ -12,16 +12,15 @@ MAINTAINER Ewan Barr "ebarr@mpifr-bonn.mpg.de"
 # Suppress debconf warnings
 ENV DEBIAN_FRONTEND noninteractive
 
-# Switch account to root and adding user accounts and password
 
-# Create space for ssh daemon and update the system
-RUN echo 'deb http://us.archive.ubuntu.com/ubuntu trusty main multiverse' >> /etc/apt/sources.list && \
-    mkdir /var/run/sshd && \
-    apt-get -y check && \
+#Update and upgrade
+
+RUN apt-get -y check && \
     apt-get -y update && \
     apt-get install -y apt-utils apt-transport-https software-properties-common python-software-properties && \
     apt-get -y update --fix-missing && \
     apt-get -y upgrade
+
 
 # Install dependencies
 RUN apt-get --no-install-recommends -y install \
@@ -51,8 +50,6 @@ RUN apt-get --no-install-recommends -y install \
     libpnglite-dev \
     libglib2.0-0 \
     libglib2.0-dev \
-    openssh-server \
-    docker.io \
     xorg \
     openbox \
     vim \
