@@ -13,6 +13,6 @@ $ python quickclf.py
 To check results, see clfresults.txt 
 
 Score Generated is between 0 and 1. \
-1- Completely Pulsar Like \
-0- Completely RFI Like 
+1- Pulsar \
+0- Not a Pulsar 
 
