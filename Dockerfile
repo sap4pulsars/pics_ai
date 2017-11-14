@@ -60,7 +60,7 @@ RUN apt-get --no-install-recommends -y install \
 
 RUN apt-get -y clean
 
-# Install python packages
+# Install python packages required specifically for PICS
 RUN pip install pip -U && \
     pip install setuptools -U && \
     pip install numpy -U && \
@@ -141,6 +141,7 @@ RUN git clone https://github.com/zhuww/ubc_AI.git
 WORKDIR $HOME/ubc_AI
 RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
 RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
+RUN echo 'print text' >> quickclf.py
 COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
 WORKDIR $HOME 
 USER root
