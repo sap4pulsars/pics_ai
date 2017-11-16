@@ -13,5 +13,5 @@ the file  named 'result1' has your score
 
 Score Generated is between 0 and 1. \
 1- Completely Pulsar Like \
-0- Completely RFI Like
+0- Completely Non-Pulsar Like
 
