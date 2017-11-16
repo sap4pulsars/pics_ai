@@ -6,13 +6,12 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 
 
-Before running the code, add all pfd files in the ubc_AI directory and run the following commands in the terminal: \
-$ cd ubc_AI \
-$ python quickclf.py 
+run the following command to obtain the score for your input file :
 
-To check results, see clfresults.txt 
+$ cat [filename] | docker run -i sap_16nov python quickclf.py > result1
+the file  named 'result1' has your score 
 
 Score Generated is between 0 and 1. \
 1- Completely Pulsar Like \
-0- Completely RFI Like 
+0- Completely RFI Like
 
