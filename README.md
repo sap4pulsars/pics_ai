@@ -8,7 +8,7 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 run the following command to obtain the score for your input file :
 
-$ cat [filename] | docker run -i sap_16nov python quickclf.py > result1
+$ cat [filename] | docker run -i [docker image name] python quickclf.py > result1
 the file  named 'result1' has your score 
 
 Score Generated is between 0 and 1. \
