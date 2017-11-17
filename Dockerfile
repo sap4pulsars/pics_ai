@@ -8,19 +8,19 @@
 FROM ubuntu:16.04
 
 MAINTAINER Ewan Barr "ebarr@mpifr-bonn.mpg.de"
-
 # Suppress debconf warnings
 ENV DEBIAN_FRONTEND noninteractive
 
+# Switch account to root and adding user accounts and password
 
-#Update and upgrade
-
-RUN apt-get -y check && \
+# Create space for ssh daemon and update the system
+RUN echo 'deb http://us.archive.ubuntu.com/ubuntu trusty main multiverse' >> /etc/apt/sources.list && \
+    mkdir /var/run/sshd && \
+    apt-get -y check && \
     apt-get -y update && \
     apt-get install -y apt-utils apt-transport-https software-properties-common python-software-properties && \
     apt-get -y update --fix-missing && \
     apt-get -y upgrade
-
 
 # Install dependencies
 RUN apt-get --no-install-recommends -y install \
@@ -50,6 +50,8 @@ RUN apt-get --no-install-recommends -y install \
     libpnglite-dev \
     libglib2.0-0 \
     libglib2.0-dev \
+    openssh-server \
+    docker.io \
     xorg \
     openbox \
     vim \
@@ -137,11 +139,11 @@ RUN make && \
 
 RUN env | awk '{print "export ",$0}' >> $HOME/.profile
 WORKDIR $HOME
-RUN git clone https://github.com/zhuww/ubc_AI.git
-WORKDIR $HOME/ubc_AI
-RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
-RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
-COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
+RUN git clone https://github.com/sap4pulsars/ubc_AI.git
+#WORKDIR $HOME/source_code_pics
+#RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
+#RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
+#COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
 WORKDIR $HOME 
 USER root
 
