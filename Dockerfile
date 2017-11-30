@@ -139,8 +139,10 @@ RUN env | awk '{print "export ",$0}' >> $HOME/.profile
 WORKDIR $HOME
 RUN git clone https://github.com/zhuww/ubc_AI.git
 WORKDIR $HOME/ubc_AI
-RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
-RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
+#RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
+#RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
+RUN rm quickclf.py
+COPY quickclf.py $HOME/ubc_AI
 COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
 WORKDIR $HOME 
 USER root
