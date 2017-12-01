@@ -144,6 +144,6 @@ WORKDIR $HOME/ubc_AI
 RUN rm quickclf.py
 COPY quickclf.py $HOME/ubc_AI
 COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
-WORKDIR $HOME 
+COPY generate_pfd.sh $HOME/ubc_AI
 USER root
 

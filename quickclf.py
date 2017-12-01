@@ -10,13 +10,14 @@ classifier = cPickle.load(open(AI_PATH+'/trained_AI/clfl2_PALFA.pkl','rb'))
 #fout=open('test_pfd','w')
 #fout.write(sys.stdin)
 #fout.close()
-script1 = "cat > test.pfd"
-script2 = "rm  test.pfd"
-call(script1,shell=True)
-pfdfile=glob.glob('*t.pfd')
+#script1 = "cd common_vol/"
+#script2 = "rm  test.pfd"
+#call(script1,shell=True)
+pfdfile=glob.glob('common_vol/*.pfd')
 AI_scores = classifier.report_score([pfdreader(f) for f in pfdfile])
-print AI_scores[0]
-call(script2,shell=True)
+for i in range(len(pfdfile)):
+    print pfdfile[i],AI_scores[i]
+#call(script2,shell=True)
 #text = '\n'.join(['%s %s' % (pfdfile[i], AI_scores[i]) for i in range(len(pfdfile))])
 #fout = open('clfresult.txt', 'w')
 #fout.write(text)
