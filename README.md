@@ -5,14 +5,8 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 
 
+Run following commands
+1. docker run -it -v *path to current repo*/common_vol:/home/psr/ubc_AI/common_vol [image_name] sh generate_pfd.sh [no. of arguements]
 
-Before running the code, add all pfd files in the ubc_AI directory and run the following commands in the terminal: \
-$ cd ubc_AI \
-$ python quickclf.py 
-
-To check results, see clfresults.txt 
-
-Score Generated is between 0 and 1. \
-1- Pulsar \
-0- Not a Pulsar 
-
+2. docker run -it -v path to current repo*/common_vol:/home/psr/ubc_AI/common_vol sap_30nov_v5 python quickclf.py
+ 
