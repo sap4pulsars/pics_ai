@@ -1,6 +1,6 @@
 import sys
 import textwrap
-from bitstring import BitArray, BitStream, ConstBitStream
+#from bitstring import BitArray, BitStream, ConstBitStream
 import numpy as np
 sys.path.append('/home/psr')
 import cPickle, glob, ubc_AI
@@ -10,7 +10,7 @@ classifier = cPickle.load(open(AI_PATH+'/trained_AI/clfl2_PALFA.pkl','rb'))
 from subprocess import call
 
 data= sys.stdin.read()
-num=4
+num=int(sys.argv[1])
 for i in range(num):
 
     with open('test.pfd', 'wb') as f:

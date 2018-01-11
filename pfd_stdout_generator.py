@@ -17,7 +17,7 @@ def pfd_stdout(num):
 
     for i in range(num):
 
-        with open('J1857+0943_PSR_1857+0943.pfd', 'rb') as g:
+        with open('/home/psr/ubc_AI/J1857+0943_PSR_1857+0943.pfd', 'rb') as g:
   
             sys.stdout.write(g.read())
             #newFileBytes = sys.getsizeof(g.read())
