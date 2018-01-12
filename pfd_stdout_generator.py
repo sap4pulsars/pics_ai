@@ -19,11 +19,10 @@ def pfd_stdout(num):
 
         with open('/home/psr/ubc_AI/J1857+0943_PSR_1857+0943.pfd', 'rb') as g:
   
-            sys.stdout.write(g.read())
-            #newFileBytes = sys.getsizeof(g.read())
-            #newFileBytes = 'eof'
-            #newFileByteArray = bytes(newFileBytes)
-            #sys.stdout.write(str(newFileBytes))
+            print(g.read())
+            print('eof')
+            sys.stdout.flush()
+            
 
 
             
