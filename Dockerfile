@@ -142,9 +142,9 @@ WORKDIR $HOME/ubc_AI
 #RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
 #RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
 RUN rm quickclf.py
-COPY pfd_stdout_generator.py $HOME/ubc_AI 
+COPY pfd_stdout_reader.py $HOME/ubc_AI 
 COPY quickclf.py $HOME/ubc_AI
-COPY J1857+0943_PSR_1857+0943.pfd $HOME/ubc_AI
+COPY ./pfd_files $HOME/ubc_AI/pfd_files/
 WORKDIR $HOME 
 USER root
 
