@@ -5,10 +5,7 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 
 
-
-Before running the code, add all pfd files in the ubc_AI directory and run the following commands in the terminal: \
-$ cd ubc_AI \
-$ python quickclf.py 
+docker run -i IMAGE_NAME python /home/psr/ubc_AI/pfd_stdout_generator.py 4 | docker run -i test_sap python /home/psr/ubc_AI/quickclf.py
 
 To check results, see clfresults.txt 
 
