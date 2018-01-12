@@ -6,7 +6,7 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 
 
-$ docker run -i IMAGE_NAME python /home/psr/ubc_AI/pfd_stdout_generator.py 5 | docker run -i IMAGE_NAME python /home/psr/ubc_AI/quickclf.py 5
+$ docker run -i sap4pulsars/pics_ai:dev5 python /home/psr/ubc_AI/pfd_stdout_generator.py 5 | docker run -i sap4pulsars/pics_ai:dev5 python /home/psr/ubc_AI/quickclf.py 5
 
 Results will be outputted to standard out.
 
