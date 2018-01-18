@@ -16,13 +16,21 @@ docker run -i sap_test:latest python /home/psr/ubc_AI/pfd_stdout_reader.py | doc
 Model names to choose from :
 
 clfl2_BD.pkl
+
 clfl2_FL.pkl
+
 clfl2_HTRU.pkl
+
 clfl2_HTRU_0.pkl
+
 clfl2_HTRU_1.pkl
+
 clfl2_HTRU_2.pkl
+
 clfl2_PALFA.pkl
+
 clfl2_SP_0.0.pkl
+
 clfsvm_HTRU_2.pkl
 
 
