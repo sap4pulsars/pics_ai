@@ -6,12 +6,12 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 For generating Metadata:
 
-docker run -i sap_test:latest python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap_test:latest python /home/psr/ubc_AI/metadata.py
+docker run -i sap4pulsars/pics_ai:dev8 python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap4pulsars/pics_ai:dev8 python /home/psr/ubc_AI/metadata.py
 
 
 For generating AI score based on particular model
 
-docker run -i sap_test:latest python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap_test:latest python /home/psr/ubc_AI/ai_score.py <name_of_model>
+docker run -i sap4pulsars/pics_ai:dev8 python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap4pulsars/pics_ai:dev8 python /home/psr/ubc_AI/ai_score.py <name_of_model>
 
 Model names to choose from :
 
