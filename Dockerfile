@@ -277,12 +277,24 @@ WORKDIR $PRESTO/python/ppgplot_src
 #    wget https://raw.githubusercontent.com/mserylak/pulsar_docker/master/ppgplot/_ppgplot.c
 WORKDIR $PRESTO/python
 RUN make && \
-    echo "export PYTHONPATH=$PYTHONPATH:$PRESTO/lib/python" >> ~/.bashrc
+    echo "export PYTHONPATH=$PYTHONPATH:$PRESTO/lib/python" >> ~/.bashrc && \
+    echo "export PYTHONPATH=$PYTHONPATH:$PSRHOME/software/psrchive/install/lib/python2.7/site-packages" >> ~/.bashrc && \
+ 	
 
 RUN env | awk '{print "export ",$0}' >> $HOME/.profile
 WORKDIR $HOME
 RUN git clone https://github.com/zhuww/ubc_AI.git
 
-
+WORKDIR $HOME/ubc_AI
+#RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
+#RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
+RUN rm quickclf.py
+RUN rm psrarchive_reader.py
+COPY pfd_stdout_reader.py $HOME/ubc_AI 
+#COPY quickclf.py $HOME/ubc_AI
+COPY ./pfd_files $HOME/ubc_AI/pfd_files/
+COPY metadata.py $HOME/ubc_AI
+COPY ai_score.py $HOME/ubc_AI
+COPY psrarchive_reader.py $HOME/ubc_AI 
+WORKDIR $HOME 
 USER root
-
