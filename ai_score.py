@@ -10,26 +10,11 @@ import time
 AI_PATH = '/'.join(ubc_AI.__file__.split('/')[:-1])
 #classifier = cPickle.load(open(AI_PATH+'/trained_AI/clfl2_PALFA.pkl','rb'))
 classifier = cPickle.load(open(AI_PATH+'/trained_AI/'+sys.argv[1],'rb'))
-pfdfile = glob.glob('ubc_AI/pfd_files/*.pfd') + glob.glob('ubc_AI/pfd_files/*.ar') + glob.glob('ubc_AI/pfd_files/*.ar2') + glob.glob('ubc_AI/pfd_files/*.spd')
-timeout = time.time() + 60*15 # 15 minutes from now
-data = ''
-i=0
-while True:
-    if time.time() > timeout:
-        break
-    line = sys.stdin.readline()
-    if line.strip() != 'eof':
-        data += line
-        continue
-    else:
-        with open('/dev/shm/test.pfd', 'wb') as f:
-            f.write(data)
-        data = ''
-    AI_scores = classifier.report_score(pfdreader('/dev/shm/test.pfd'))   
-    print os.path.basename(os.path.normpath(pfdfile[i])), "%.6f" % AI_scores
-    sys.stdout.flush()
-    time.sleep(1)
-    i+=1
-
-    
+#pfdfile = glob.glob('ubc_AI/pfd_files/*.pfd') + glob.glob('ubc_AI/pfd_files/*.ar') + glob.glob('ubc_AI/pfd_files/*.ar2') + glob.glob('ubc_AI/pfd_files/*.spd')
+pfdfile = glob.glob('/home/psr/ubc_AI/pfd_files/*.pfd')
+AI_scores = classifier.report_score([pfdreader(f) for f in pfdfile])
+text = '\n'.join(['%s %s' % (pfdfile[i], AI_scores[i]) for i in range(len(pfdfile))])
+fout = open('clfresult.txt', 'w')
+fout.write(text)
+fout.close()
 

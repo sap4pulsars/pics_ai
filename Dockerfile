@@ -66,6 +66,8 @@ RUN pip install pip -U && \
     pip install numpy -U && \
     pip install scipy==0.19.0 -U && \
     pip install matplotlib -U && \
+    pip install bson  -U && \
+    pip install pykafka -u && \		
     easy_install scikit-learn==0.12.1 && \
     easy_install theano==0.7 
    
@@ -142,11 +144,13 @@ WORKDIR $HOME/ubc_AI
 #RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
 #RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
 RUN rm quickclf.py
-COPY pfd_stdout_reader.py $HOME/ubc_AI 
+#COPY pfd_stdout_reader.py $HOME/ubc_AI 
 #COPY quickclf.py $HOME/ubc_AI
 COPY ./pfd_files $HOME/ubc_AI/pfd_files/
 COPY metadata.py $HOME/ubc_AI
 COPY ai_score.py $HOME/ubc_AI
+COPY bson_send.py $HOME/ubc_AI
+COPY bson_receive.py $HOME/ubc_AI
 WORKDIR $HOME 
 USER root
 
