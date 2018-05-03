@@ -61,13 +61,17 @@ RUN apt-get --no-install-recommends -y install \
 RUN apt-get -y clean
 
 # Install python packages
-RUN pip install pip -U && \
-    pip install setuptools -U && \
+RUN pip install --upgrade pip 
+WORKDIR /usr/bin
+RUN rm pip
+COPY pip /usr/bin/pip 
+
+RUN pip install setuptools -U && \
     pip install numpy -U && \
     pip install scipy==0.19.0 -U && \
     pip install matplotlib -U && \
     pip install bson  -U && \
-    pip install pykafka -u && \		
+    pip install pykafka  && \		
     easy_install scikit-learn==0.12.1 && \
     easy_install theano==0.7 
    
