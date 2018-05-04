@@ -4,21 +4,26 @@ Original Source code of the AI can be found at https://github.com/zhuww/ubc_AI \
 The presto docker file is based on the work of https://github.com/ewanbarr/presto-docker
 
 
-For producing to Kafka broker (Currently set with fixed host and topic):
+- For producing to Kafka broker (Currently set with fixed host and topic):
 
-docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_send.py
+   docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_send.py
 
-For consuming from Kafka broker(Currently set with fixed host and topic):
 
-docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_send.py
+- For consuming from Kafka broker(Currently set with fixed host and topic):
 
-For generating Metadata:
+  docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_send.py
 
- docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/metadata.py
 
-For generating AI score based on particular model
+- For generating Metadata:
 
-docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/ai_score.py <name_of_model>
+  docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/metadata.py
+
+
+- For generating AI score based on particular model
+
+ docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/ai_score.py <name_of_model>
+ 
+ 
 
 Model names to choose from :
 
