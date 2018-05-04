@@ -11,7 +11,7 @@ The presto docker file is based on the work of https://github.com/ewanbarr/prest
 
 - For consuming from Kafka broker(Currently set with fixed host and topic):
 
-  docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_send.py
+  docker run -i sap4pulsars/pics_ai:kafka_working python /home/psr/ubc_AI/bson_receive.py
 
 
 - For generating Metadata:
