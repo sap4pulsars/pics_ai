@@ -32,11 +32,13 @@ for i in pfdfile:
 	data_packet['Pdot (bary)']=Metadata.bary_p2
 	data_packet['Eccentricity']=Metadata.orb_e
 	data_packet['Orbital period']=Metadata.orb_p
+        data_packet['RA']= Metadata.rastr
+        data_packet['DEC']= Metadata.decstr 
 
 
 	json_send_packet=bson.dumps(data_packet)
 	client = KafkaClient(hosts="52.59.194.36:9092")
-	topic = client.topics['MPIfR_test']
+	topic = client.topics['MPIfR_test3']
 	producer = topic.get_sync_producer(max_request_size=10000012)
 
 	try:

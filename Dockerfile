@@ -22,6 +22,11 @@ RUN apt-get -y check && \
     apt-get -y upgrade
 
 
+RUN adduser --disabled-password --gecos 'unprivileged user' psr && \
+    echo "psr:psr" | chpasswd && \
+    mkdir -p /home/psr/.ssh && \
+    chown -R psr:psr /home/psr/.ssh
+
 # Install dependencies
 RUN apt-get --no-install-recommends -y install \
     build-essential \
@@ -150,7 +155,7 @@ WORKDIR $HOME/ubc_AI
 RUN rm quickclf.py
 #COPY pfd_stdout_reader.py $HOME/ubc_AI 
 #COPY quickclf.py $HOME/ubc_AI
-COPY ./pfd_files $HOME/ubc_AI/pfd_files/
+#COPY ./pfd_files $HOME/ubc_AI/pfd_files/
 COPY metadata.py $HOME/ubc_AI
 COPY ai_score.py $HOME/ubc_AI
 COPY bson_send.py $HOME/ubc_AI
