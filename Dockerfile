@@ -106,9 +106,9 @@ RUN pip install pip -U && \
     pip install matplotlib -U && \
     easy_install scikit-learn==0.12.1 && \
     easy_install theano==0.7 && \
-    bson && \
-    pyKafka && \
-    ipython
+    pip install bson && \
+    pip install pyKafka && \
+    pip install ipython
 
 
 RUN apt-get update -y && \
