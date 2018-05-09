@@ -92,7 +92,10 @@ RUN apt-get -y clean
 
 #RUN yum install tcsh
 
-
+RUN pip install --upgrade pip 
+WORKDIR /usr/bin
+RUN rm pip
+COPY pip /usr/bin/pip 
 # Install python packages
 
 
