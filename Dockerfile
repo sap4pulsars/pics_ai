@@ -278,7 +278,7 @@ WORKDIR $PRESTO/python/ppgplot_src
 WORKDIR $PRESTO/python
 RUN make && \
     echo "export PYTHONPATH=$PYTHONPATH:$PRESTO/lib/python" >> ~/.bashrc && \
-    echo "export PYTHONPATH=$PYTHONPATH:$PSRHOME/software/psrchive/install/lib/python2.7/site-packages" >> ~/.bashrc && \
+    echo "export PYTHONPATH=$PYTHONPATH:$PSRHOME/psrchive/install/lib/python2.7/site-packages" >> ~/.bashrc && \
  	
 
 RUN env | awk '{print "export ",$0}' >> $HOME/.profile
