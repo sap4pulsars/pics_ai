@@ -5,18 +5,19 @@ from subprocess import call
 sys.path.append('/home/psr')
 import cPickle, glob, ubc_AI
 from ubc_AI.data import pfdreader
+from ubc_AI.psrarchive_reader import ar2data
 from ubc_AI.prepfold import pfd
 import bson
 from pykafka import KafkaClient
 pfdfile = glob.glob('/home/psr/ubc_AI/pfd_files/*.pfd')
-
+ar2file = glob.glob('/home/psr/ubc_AI/ar2_files/*.ar2')
 
 
 for i in pfdfile:
 	Metadata = pfd(i)
 
 	with open('%s'%i,'rb') as f:
-        	data = f.read()
+        data = f.read()
 
 	data_packet={}
 	data_packet['blob']=data
@@ -44,3 +45,27 @@ for i in pfdfile:
 	except:
         	print 'Did not produce'
 
+for i in ar2file:
+	Metadata = ar2data(i)
+
+	with open('%s'%i,'rb') as f:
+        data = f.read()
+
+	data_packet={}
+	data_packet['blob']=data
+	data_packet['filename']=Metadata.filename
+	data_packet['DM']=Metadata.dm
+	data_packet['Period (topo)']=Metadata.period
+	data_packet['Centre frequency:']=Metadata.freq
+	data_packet['Bandwidth']=Metadata.bandwidth
+
+
+	json_send_packet=bson.dumps(data_packet)
+	client = KafkaClient(hosts="52.59.194.36:9092")
+	topic = client.topics['MPIfR_test5']
+	producer = topic.get_sync_producer(max_request_size=10000012)
+
+	try:
+        	producer.produce(json_send_packet)
+	except:
+        	print 'Did not produce'
