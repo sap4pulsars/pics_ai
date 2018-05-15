@@ -294,13 +294,14 @@ RUN git clone https://github.com/zhuww/ubc_AI.git
 WORKDIR $HOME/ubc_AI
 #RUN echo sys.path.append\(\'/home/psr\'\) | cat - quickclf.py > temp && mv temp quickclf.py
 #RUN echo 'import sys' | cat - quickclf.py > temp && mv temp quickclf.py
-RUN rm quickclf.py
-RUN rm psrarchive_reader.py
-COPY pfd_stdout_reader.py $HOME/ubc_AI 
+#RUN rm quickclf.py
+#RUN rm psrarchive_reader.py
+#COPY pfd_stdout_reader.py $HOME/ubc_AI 
 #COPY quickclf.py $HOME/ubc_AI
+COPY ./ar2_files $HOME/ubc_AI/ar2_files/
 COPY ./pfd_files $HOME/ubc_AI/pfd_files/
-COPY metadata.py $HOME/ubc_AI
-COPY ai_score.py $HOME/ubc_AI
-COPY psrarchive_reader.py $HOME/ubc_AI 
+#COPY metadata.py $HOME/ubc_AI
+#COPY ai_score.py $HOME/ubc_AI
+#COPY psrarchive_reader.py $HOME/ubc_AI 
 WORKDIR $HOME 
 USER root
