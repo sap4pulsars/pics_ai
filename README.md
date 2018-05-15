@@ -4,16 +4,15 @@ Original Source code of the AI can be found at https://github.com/zhuww/ubc_AI \
 The presto docker file is based on the work of https://github.com/ewanbarr/presto-docker
 
 
-For generating Metadata:
+For Producing to Kafka Client:
 
-docker run -i sap_test:latest python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap_test:latest python /home/psr/ubc_AI/metadata.py
+python bson_send.py
 
+For Consuming from Kafka Client:
 
-For generating AI score based on particular model
+python bson_receive.py
 
-docker run -i sap_test:latest python /home/psr/ubc_AI/pfd_stdout_reader.py | docker run -i sap_test:latest python /home/psr/ubc_AI/ai_score.py <name_of_model>
-
-Model names to choose from :
+Consumer loops over all models kept in ubc_AI/trained_AI. List of all models currently available is given below.
 
 clfl2_BD.pkl
 clfl2_FL.pkl
@@ -24,9 +23,6 @@ clfl2_HTRU_2.pkl
 clfl2_PALFA.pkl
 clfl2_SP_0.0.pkl
 clfsvm_HTRU_2.pkl
-
-
-
 
 Results will be outputted to stdout
 
