@@ -300,7 +300,8 @@ WORKDIR $HOME/ubc_AI
 #COPY quickclf.py $HOME/ubc_AI
 COPY ./ar2_files $HOME/ubc_AI/ar2_files/
 COPY ./pfd_files $HOME/ubc_AI/pfd_files/
-#COPY metadata.py $HOME/ubc_AI
+COPY ./bson_send.py $HOME/ubc_AI
+COPY ./bson_receive.py $HOME/ubc_AI
 COPY ai_score.py $HOME/ubc_AI
 #COPY psrarchive_reader.py $HOME/ubc_AI 
 WORKDIR $HOME 
