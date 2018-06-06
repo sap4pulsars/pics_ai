@@ -30,3 +30,7 @@ Score Generated is between 0 and 1. \
 1- Pulsar \
 0- Not a Pulsar 
 
+To stream *.ar2 files from hercules cluster:
+
+singularity exec -H /u/vishnu:/home1 -B /u/vishnu/HTRU-S-LOWLAT/storage/View/ar2_files_htru/:/home/psr/ubc_AI/ar2_files_htru /u/vishnu/sap4pulsars_pics_ai_dev10.img  python /home/psr/ubc_AI/ar2_files_htru/bson_send_modified.py
+
