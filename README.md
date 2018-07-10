@@ -34,3 +34,5 @@ To stream *.ar2 files from hercules cluster:
 
 singularity exec -H /u/vishnu:/home1 -B /u/vishnu/HTRU-S-LOWLAT/storage/View/ar2_files_htru/:/home/psr/ubc_AI/ar2_files_htru /u/vishnu/sap4pulsars_pics_ai_dev10.img  python /home/psr/ubc_AI/ar2_files_htru/bson_send_modified.py
 
+ find ar2_files_htru/ -maxdepth 1 -type f |head -100|xargs cp -t ar2_files_htru_100/
+
