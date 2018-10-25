@@ -108,7 +108,8 @@ RUN pip install pip -U && \
     easy_install theano==0.7 && \
     pip install bson && \
     pip install pyKafka && \
-    pip install ipython
+    pip install ipython && \
+    pip install scikit-image
 
 
 RUN apt-get update -y && \
