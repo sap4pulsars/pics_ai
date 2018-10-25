@@ -85,11 +85,12 @@ RUN apt-get --no-install-recommends -y install \
     emacs \
     gedit \
     bc \
+    sudo \
     curl \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN apt-get -y clean
-
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 #RUN yum install tcsh
 
 RUN pip install --upgrade pip 
@@ -131,7 +132,7 @@ RUN apt-get install tcsh
 
 
 USER psr
-
+USER root
 # Java
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
