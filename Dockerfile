@@ -90,7 +90,7 @@ RUN apt-get --no-install-recommends -y install \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN apt-get -y clean
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+#RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 #RUN yum install tcsh
 
 RUN pip install --upgrade pip 
@@ -132,7 +132,7 @@ RUN apt-get install tcsh
 
 
 USER psr
-USER root
+#USER root
 # Java
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
@@ -253,7 +253,7 @@ RUN ./bootstrap && \
 ENV SIGPYPROC_HOME $PSRHOME/sigpyproc
 #ENV PATH $PATH:$SIGPYPROC/install/bin
 WORKDIR $SIGPYPROC_HOME
-RUN python setup.py install
+RUN sudo python setup.py install
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$SIGPYPROC_HOME/lib/c
 
 
@@ -266,8 +266,8 @@ RUN env | awk '{print "export ",$0}' > $HOME/.profile && \
 ENV PYSLALIB $PSRHOME/pyslalib
 ENV PYTHONPATH PYSLALIB/install
 WORKDIR $PYSLALIB
-RUN python setup.py install --record list.txt --prefix=$PYSLALIB/install && \
-    python setup.py clean --all && \
+RUN sudo python setup.py install --record list.txt --prefix=$PYSLALIB/install && \
+    sudo python setup.py clean --all && \
     rm -rf .git
 
 # Presto
