@@ -87,6 +87,8 @@ RUN apt-get --no-install-recommends -y install \
     bc \
     sudo \
     curl \
+    eog \
+    latex2html \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN apt-get -y clean
